@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Fire</string>
+
+    <string name="generic_error">error .....</string>
 </resources>
