@@ -30,8 +30,17 @@ public class NoteActivity extends AppCompatActivity implements NoteDomain.View {
         noteDomain = new NoteDomain(this, NoteDatasource.getInstance(this));
         noteDomain.queryNotes();
         queryNotes();
+
+        saveNote();
     }
 
+
+    private void saveNote(){
+        Note note = new Note();
+        note.setEndDate("2050-06-01");
+        note.setDescription("*** ANDRIOD NOTE ****");
+        noteDomain.saveNote(note);
+    }
 
     private void queryNotes(){
         noteDomain = new NoteDomain(this, NoteDatasource.getInstance(this));

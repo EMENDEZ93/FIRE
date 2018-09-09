@@ -34,6 +34,21 @@ public class NoteDomain {
     }
 
 
+    public void saveNote(Note note){
+        iNoteRemoteDatasource.saveNote(new INoteRemoteDatasource.PostNoteCallback() {
+            @Override
+            public void saveNote() {
+                view.showMessage(R.string.successful_message);
+            }
+
+            @Override
+            public void onError() {
+                view.showMessage(R.string.generic_error);
+            }
+        }, note);
+    }
+
+
     public interface  View {
         void showNotes(List<Note> notes);
         void showMessage(int message);

@@ -2,4 +2,6 @@
     <string name="app_name">Fire</string>
 
     <string name="generic_error">error .....</string>
+    <string name="successful_message">Nota creada con exito.....</string>
+
 </resources>
