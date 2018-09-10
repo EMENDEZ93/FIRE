@@ -55,7 +55,7 @@ public class NoteActivity extends AppCompatActivity implements NoteDomain.View {
 
                 new AlertDialog.Builder(context)
                         .setView(formElementsView)
-                        .setTitle("Create Student")
+                        .setTitle("Create Notes")
                         .setPositiveButton("Add",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {

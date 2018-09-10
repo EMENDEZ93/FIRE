@@ -87,7 +87,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
                     final CharSequence[] items = { "Edit", "Delete" };
 
-                    new AlertDialog.Builder(context).setTitle("Student Record")
+                    new AlertDialog.Builder(context).setTitle("Note Record")
                             .setItems(items, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int item) {
 
