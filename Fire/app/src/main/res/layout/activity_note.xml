@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.note.NoteActivity">
+    tools:context=".view.note.NoteActivity"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/createNoteButton"
+        android:layout_width="292dp"
+        android:layout_height="wrap_content"
+        android:text="new note"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="10dp"
+        android:layout_gravity="center"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/notes_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="452dp"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_gravity="center_horizontal"
@@ -19,6 +29,8 @@
         android:paddingLeft="6dp"
         android:paddingRight="6dp"
         android:splitMotionEvents="false"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="59dp" />
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

@@ -1,8 +1,15 @@
 package app.fire.em.fire.view.note;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.List;
@@ -18,6 +25,7 @@ public class NoteActivity extends AppCompatActivity implements NoteDomain.View {
     private NoteAdapter noteAdapter;
     private NoteDomain noteDomain;
     private RecyclerView notes_list;
+    private Button create_note_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +39,47 @@ public class NoteActivity extends AppCompatActivity implements NoteDomain.View {
         noteDomain.queryNotes();
         queryNotes();
 
-        saveNote();
+        //saveNote();
+        create_note_button = (Button) findViewById(R.id.createNoteButton);
+
+        create_note_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Context context = view.getRootView().getContext();
+
+                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                final View formElementsView = inflater.inflate(R.layout.note_form, null, false);
+
+
+                final EditText description = (EditText) formElementsView.findViewById(R.id.descriptionEditText);
+
+                new AlertDialog.Builder(context)
+                        .setView(formElementsView)
+                        .setTitle("Create Student")
+                        .setPositiveButton("Add",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+
+                                        saveNote(description.getText().toString());
+
+                                        Toast.makeText(getApplicationContext()
+                                                , description.getText().toString(), Toast.LENGTH_LONG).show();
+                                        dialog.cancel();
+                                    }
+
+                                }).show();
+
+
+            }
+        });
+
     }
 
 
-    private void saveNote(){
+    private void saveNote(String descripcion){
         Note note = new Note();
         note.setEndDate("2050-06-01");
-        note.setDescription("*** ANDRIOD NOTE ****");
+        note.setDescription(descripcion);
         noteDomain.saveNote(note);
     }
 
