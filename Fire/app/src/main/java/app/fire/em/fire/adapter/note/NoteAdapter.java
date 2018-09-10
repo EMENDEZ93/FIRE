@@ -23,7 +23,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
     private static List<Note> noteList;
     private Context context;
-    private NoteActivity noteActivity;
+    //private NoteActivity noteActivity;
+    NoteActivity noteActivity;
 
     public NoteAdapter(Context context, List<Note> notes, NoteActivity noteActivity){
         this.context = context;
@@ -54,7 +55,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         return noteList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    //public static class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView id;
         public TextView startDate;
@@ -94,7 +96,9 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
                                     }
 
                                     if(item ==1){
+                                        deleteRecord(id.getText().toString());
                                         Toast.makeText(view.getContext(), "eliminando " + id.getText().toString(), Toast.LENGTH_LONG).show();
+
                                     }
 
                                     dialog.dismiss();
@@ -126,7 +130,14 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
                             }
                         }).show();
 
+    }
 
+
+
+    public void deleteRecord(final String id) {
+        this.noteActivity.deleteNote(id);
+        this.noteActivity.finish();
+        this.noteActivity.restartActivity();
     }
 
 }

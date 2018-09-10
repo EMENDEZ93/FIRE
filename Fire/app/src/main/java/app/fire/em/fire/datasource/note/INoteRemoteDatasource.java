@@ -9,19 +9,19 @@ public interface INoteRemoteDatasource {
 
     void saveNote(PostNoteCallback callback, Note note);
 
-    void deleteNote(DeleteNoteCallback callback, String id);
+    void deleteNote(DeleteNoteCallback deleteNoteCallback, String id);
 
-    public interface GetNotesCallback{
+    interface GetNotesCallback{
         void onNotesLoader(List<Note> notes);
         void onError();
     }
 
-    public interface PostNoteCallback{
+    interface PostNoteCallback{
         void saveNote();
         void onError();
     }
 
-    public interface DeleteNoteCallback{
+    interface DeleteNoteCallback{
         void onDeleteNote(String id);
         void onError();
     }

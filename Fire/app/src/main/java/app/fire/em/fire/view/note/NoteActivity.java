@@ -107,7 +107,14 @@ public class NoteActivity extends AppCompatActivity implements NoteDomain.View {
     }
 
     public void deleteNote(String id){
+        noteDomain = new NoteDomain(this, NoteDatasource.getInstance(this));
         noteDomain.deleteNote(id);
+    }
+
+
+    public void restartActivity(){
+        finish();
+        startActivity(getIntent());
     }
 
 }

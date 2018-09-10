@@ -147,12 +147,13 @@ public class NoteDatasource implements INoteRemoteDatasource {
 
     }
 
+
     @Override
-    public void deleteNote(final DeleteNoteCallback callback, String id) {
+    public void deleteNote(final DeleteNoteCallback callback, final String id) {
 
 
         StringRequest deleteResquest = new StringRequest(
-                Request.Method.DELETE,
+                Request.Method.GET,
                 DELETE_NOTE_URL + id + "/delete",
                 new Response.Listener<String>() {
                     @Override

@@ -50,7 +50,17 @@ public class NoteDomain {
 
 
     public void deleteNote(String id){
+        iNoteRemoteDatasource.deleteNote(new INoteRemoteDatasource.DeleteNoteCallback() {
+            @Override
+            public void onDeleteNote(String id) {
+                view.showMessage(R.string.generic_error);
+            }
 
+            @Override
+            public void onError() {
+
+            }
+        }, id);
     }
 
     public interface  View {
