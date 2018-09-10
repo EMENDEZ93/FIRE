@@ -49,6 +49,10 @@ public class NoteDomain {
     }
 
 
+    public void deleteNote(String id){
+
+    }
+
     public interface  View {
         void showNotes(List<Note> notes);
         void showMessage(int message);

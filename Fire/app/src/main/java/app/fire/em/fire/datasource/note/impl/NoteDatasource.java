@@ -28,6 +28,8 @@ public class NoteDatasource implements INoteRemoteDatasource {
 
     private final static String GET_NOTES_URL = "http://fire-backend.herokuapp.com/notes";
     private final static String SAVE_NOTE_URL = "http://fire-backend.herokuapp.com/note/save";
+    private final static String DELETE_NOTE_URL = "http://fire-backend.herokuapp.com/note/";
+
     private Context context;
     private RequestQueue requestQueue;
     private static INoteRemoteDatasource INSTANCE = null;
@@ -144,4 +146,27 @@ public class NoteDatasource implements INoteRemoteDatasource {
         }
 
     }
+
+    @Override
+    public void deleteNote(final DeleteNoteCallback callback, String id) {
+
+
+        StringRequest deleteResquest = new StringRequest(
+                Request.Method.DELETE,
+                DELETE_NOTE_URL + id + "/delete",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {}
+                    }, new Response.ErrorListener(){
+
+                    @Override
+                    public void onErrorResponse(VolleyError error){
+                        callback.onError();
+                    }
+        });
+        requestQueue.add(deleteResquest);
+
+
+    }
+
 }

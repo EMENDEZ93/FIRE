@@ -37,9 +37,9 @@ public class NoteActivity extends AppCompatActivity implements NoteDomain.View {
 
         noteDomain = new NoteDomain(this, NoteDatasource.getInstance(this));
         noteDomain.queryNotes();
+        deleteNote("16");
         queryNotes();
 
-        //saveNote();
         create_note_button = (Button) findViewById(R.id.createNoteButton);
 
         create_note_button.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +65,10 @@ public class NoteActivity extends AppCompatActivity implements NoteDomain.View {
                                         Toast.makeText(getApplicationContext()
                                                 , description.getText().toString(), Toast.LENGTH_LONG).show();
                                         dialog.cancel();
+
+                                        finish();
+                                        startActivity(getIntent());
+
                                     }
 
                                 }).show();
@@ -72,6 +76,8 @@ public class NoteActivity extends AppCompatActivity implements NoteDomain.View {
 
             }
         });
+
+
 
     }
 
@@ -99,4 +105,9 @@ public class NoteActivity extends AppCompatActivity implements NoteDomain.View {
         Toast.makeText(getApplicationContext(),
                 "***** ERROR *****" + getString(message), Toast.LENGTH_LONG).show();
     }
+
+    public void deleteNote(String id){
+        noteDomain.deleteNote(id);
+    }
+
 }
